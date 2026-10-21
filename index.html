@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070b18">
+<meta name="description" content="ফিউচারিস্টিক Trading & Self-Discipline Journal — ট্রেড, ভুল, অভ্যাস ও পারফরম্যান্স ট্র্যাক করুন।">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Trading Journal — Command Center</title>
+<style>
+:root{color-scheme:dark;--bg:#060914;--panel:rgba(15,23,43,.86);--panel2:#111c34;--line:rgba(132,166,255,.18);--text:#f3f7ff;--muted:#9caecb;--cyan:#65f4ff;--blue:#7797ff;--violet:#b48aff;--green:#57e6b1;--red:#ff6e9b;--radius:20px;--shadow:0 16px 45px rgba(0,0,0,.26)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font:15px/1.55 system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:radial-gradient(ellipse at 12% -10%,rgba(76,103,255,.2),transparent 38%),radial-gradient(ellipse at 100% 18%,rgba(36,223,232,.1),transparent 32%),linear-gradient(180deg,#070b18,#050812 70%);background-attachment:fixed}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;background-image:linear-gradient(rgba(115,150,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(115,150,255,.12) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+header{position:relative;overflow:hidden;padding:26px 16px 22px;border-bottom:1px solid var(--line);background:linear-gradient(125deg,rgba(20,34,70,.92),rgba(9,14,31,.85));box-shadow:0 12px 40px rgba(0,0,0,.18)}header:after{content:"";position:absolute;width:240px;height:240px;right:-80px;top:-120px;border-radius:50%;border:1px solid rgba(101,244,255,.2);box-shadow:0 0 0 24px rgba(101,244,255,.025),0 0 0 48px rgba(119,151,255,.025),0 0 80px rgba(101,244,255,.08)}
+.wrap{position:relative;z-index:1;max-width:900px;margin:auto;padding:0 14px 100px}.eyebrow{font-size:10px;color:var(--cyan);letter-spacing:.19em;font-weight:900}.title{font-size:clamp(23px,5.4vw,32px);line-height:1.16;font-weight:900;letter-spacing:-.04em;margin:8px 0 9px;background:linear-gradient(90deg,#fff 0%,#a7f8ff 48%,#a9baff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.sub{color:var(--muted);font-size:13px}.live-chip{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(87,230,177,.25);border-radius:999px;padding:5px 10px;color:#9df5d4;font-size:11px;background:rgba(87,230,177,.07);margin-top:13px}.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+.overview{margin:16px 0 12px;padding:17px;border-radius:23px;border:1px solid rgba(111,151,255,.25);background:linear-gradient(135deg,rgba(25,38,75,.92),rgba(12,20,40,.94));box-shadow:var(--shadow);position:relative;overflow:hidden}.overview:after{content:"";position:absolute;right:-55px;bottom:-90px;width:190px;height:190px;border-radius:50%;background:rgba(101,244,255,.08);filter:blur(3px)}.overview-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;position:relative;z-index:1}.overview-label{color:#aabde4;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:800}.overview-date{font-size:18px;font-weight:850;margin-top:3px}.tiny-tag{font-size:10px;color:var(--cyan);border:1px solid rgba(101,244,255,.25);background:rgba(101,244,255,.07);padding:5px 8px;border-radius:8px;white-space:nowrap}.quickstats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:15px;position:relative;z-index:1}.quickstat{padding:11px 12px;border-radius:15px;background:rgba(5,10,24,.45);border:1px solid rgba(142,166,255,.12);min-width:0}.quickstat span{display:block;font-size:11px;color:#9baccb}.quickstat strong{display:block;font-size:22px;line-height:1.25;margin-top:3px;font-weight:850;letter-spacing:-.03em}.quickstat small{font-size:10px;color:#7f91b3}.accent-text{color:var(--cyan)!important}.progress-head{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:#aabde4;margin:14px 0 7px;position:relative;z-index:1}.progress-track{height:7px;background:#263250;border-radius:99px;overflow:hidden;position:relative;z-index:1}.progress-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 14px rgba(101,244,255,.35);transition:width .3s}
+nav{display:flex;gap:7px;overflow-x:auto;padding:9px 0 13px;position:sticky;top:0;background:rgba(6,9,20,.9);backdrop-filter:blur(16px);z-index:8;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav button{white-space:nowrap;border:1px solid var(--line);background:rgba(18,28,52,.92);color:#aab8d3;border-radius:13px;padding:10px 13px;font-weight:800;font-size:12px;cursor:pointer;transition:.2s}nav button.active{background:linear-gradient(120deg,var(--cyan),#a8c0ff);color:#07101e;border-color:transparent;box-shadow:0 5px 22px rgba(101,244,255,.17)}section{display:none}section.active{display:block;animation:rise .28s ease}@keyframes rise{from{opacity:.55;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.card{background:linear-gradient(145deg,rgba(17,27,50,.94),rgba(10,17,34,.94));border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:11px 0;box-shadow:0 12px 30px rgba(0,0,0,.13);position:relative;overflow:hidden}.card:focus-within{border-color:rgba(101,244,255,.42);box-shadow:0 0 0 1px rgba(101,244,255,.08),var(--shadow)}h2{font-size:17px;letter-spacing:-.02em;margin:0 0 13px;display:flex;align-items:center;gap:8px}h2:before{content:"";width:4px;height:19px;border-radius:4px;background:linear-gradient(var(--cyan),var(--violet));box-shadow:0 0 12px rgba(101,244,255,.25)}h3{font-size:14px;margin:17px 0 8px;color:#dce8ff}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}label{display:block;font-size:12px;color:#a8b8d4;margin:11px 0 5px}input,select,textarea{width:100%;padding:12px 12px;border:1px solid rgba(139,164,226,.2);border-radius:12px;background:rgba(5,11,25,.8);color:var(--text);font:inherit;outline:none;transition:border .18s,box-shadow .18s}input:focus,select:focus,textarea:focus{border-color:rgba(101,244,255,.65);box-shadow:0 0 0 3px rgba(101,244,255,.08)}input[type=checkbox]{width:18px;height:18px;accent-color:var(--cyan);flex:0 0 auto}textarea{min-height:82px;resize:vertical}fieldset{border:1px solid rgba(139,164,226,.17);border-radius:14px;padding:9px 12px;margin:12px 0;background:rgba(5,11,25,.25)}legend{font-size:12px;color:#aab9d6;padding:0 6px}.radio{display:flex;align-items:center;gap:9px;margin:9px 0;color:#e2eaff}.radio input{width:17px;accent-color:var(--cyan)}.check{display:flex;align-items:flex-start;gap:10px;margin:10px 0;padding:9px 10px;border-radius:11px;color:#e0e9fb;background:rgba(4,10,23,.32);border:1px solid rgba(139,164,226,.08)}.check:has(input:checked){border-color:rgba(101,244,255,.24);background:rgba(101,244,255,.055)}.check span{flex:1}.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.btn{border:0;border-radius:13px;padding:12px 15px;font-weight:850;font-size:13px;background:linear-gradient(110deg,var(--cyan),#a9c0ff);color:#07101e;cursor:pointer;box-shadow:0 7px 20px rgba(101,244,255,.11);transition:transform .15s,filter .15s}.btn:active{transform:scale(.98)}.btn.secondary{background:rgba(23,35,62,.92);color:#e4edff;border:1px solid rgba(139,164,226,.19);box-shadow:none}.btn.danger{background:linear-gradient(110deg,#ff6e9b,#b84772);color:#fff}.notice{font-size:12px;color:#a9b9d4;background:rgba(95,130,200,.08);border:1px solid rgba(132,166,255,.12);padding:12px;border-radius:13px;margin-top:12px}.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat{background:linear-gradient(145deg,rgba(24,39,70,.88),rgba(10,18,36,.88));border:1px solid rgba(139,164,226,.15);border-radius:15px;padding:13px}.stat strong{font-size:23px;display:block;color:var(--cyan);letter-spacing:-.04em}.stat span{font-size:11px;color:#a6b6d2}.item{border:1px solid rgba(139,164,226,.17);border-radius:15px;padding:13px;margin:10px 0;background:rgba(5,11,25,.48)}.itemtop{display:flex;justify-content:space-between;gap:8px;align-items:center}.pill{font-size:10px;border-radius:999px;padding:5px 9px;background:rgba(101,244,255,.08);border:1px solid rgba(101,244,255,.16);color:#9af6ff}.small{font-size:11px;color:#9eafce}.empty{padding:22px;text-align:center;color:#8fa2c3;border:1px dashed rgba(139,164,226,.18);border-radius:14px}.bar{height:7px;border-radius:9px;background:#24304b;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--cyan));width:0;border-radius:9px;box-shadow:0 0 10px rgba(101,244,255,.25)}footer{color:#7184a8;font-size:11px;text-align:center;padding:24px 8px 16px}.section-kicker{font-size:10px;letter-spacing:.14em;color:var(--cyan);font-weight:900;text-transform:uppercase;margin-bottom:3px}.status-ok{color:var(--green)}
+@media(min-width:650px){.wrap{padding-left:22px;padding-right:22px}.quickstats{grid-template-columns:repeat(4,minmax(0,1fr))}.statgrid{grid-template-columns:repeat(4,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:20px}.overview{padding:21px}nav button{font-size:13px;padding:11px 16px}}
+@media(max-width:380px){.grid{grid-template-columns:1fr}.title{font-size:23px}.card{padding:13px}.overview{padding:14px}.quickstat strong{font-size:20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="eyebrow">PERSONAL PERFORMANCE SYSTEM</div>
+<div class="title">Trading & Self-Discipline Journal</div>
+<div class="sub">ট্রেডিং • ভুলের রেকর্ড • মনোযোগ • দৈনিক অভ্যাস</div><div class="live-chip"><span class="live-dot"></span> PERSONAL PERFORMANCE SYSTEM <span style="opacity:.55">/</span> LOCAL & PRIVATE</div>
+</div></header>
+<div class="wrap">
+<div class="overview">
+  <div class="overview-top"><div><div class="overview-label">Command Center</div><div class="overview-date" id="overviewDate">আজকের অগ্রগতি</div></div><span class="tiny-tag">DISCIPLINE FIRST</span></div>
+  <div class="quickstats">
+    <div class="quickstat"><span>মোট রেকর্ড</span><strong id="quickRecords">0</strong><small>সংরক্ষিত দিন</small></div>
+    <div class="quickstat"><span>ট্রেড করা দিন</span><strong id="quickTradeDays">0</strong><small>ট্রেডিং লগ</small></div>
+    <div class="quickstat"><span>অভ্যাস সম্পন্ন</span><strong id="quickHabits">0%</strong><small>আজকের চেকলিস্ট</small></div>
+    <div class="quickstat"><span>ডিসিপ্লিন স্কোর</span><strong id="quickDiscipline" class="accent-text">—</strong><small>আজকের রেটিং / ৫</small></div>
+  </div>
+  <div class="progress-head"><span>আজকের অভ্যাসের অগ্রগতি</span><strong id="quickProgressLabel">0 / 9</strong></div><div class="progress-track"><div class="progress-fill" id="quickProgress"></div></div>
+</div>
+<nav>
+<button class="active" data-tab="today">আজকের জার্নাল</button>
+<button data-tab="history">পুরোনো রেকর্ড</button>
+<button data-tab="reports">রিপোর্ট</button>
+<button data-tab="backup">ব্যাকআপ</button>
+</nav>
+
+<section id="today" class="active">
+<div class="card">
+<h2>📅 তারিখ ও ট্রেডিং</h2>
+<div class="grid">
+<div><label for="date">রেকর্ডের তারিখ</label><input id="date" type="date"></div>
+<div><label for="market">মার্কেট</label><select id="market"><option>XAU/USD (Gold)</option><option>BTC/USD (Bitcoin)</option><option>Both</option><option>Other</option></select></div>
+</div>
+<fieldset><legend>আজ ট্রেড করেছ?</legend>
+<label class="radio"><input type="radio" name="traded" value="yes"> হ্যাঁ, ট্রেড করেছি</label>
+<label class="radio"><input type="radio" name="traded" value="no" checked> না, ট্রেড করিনি</label>
+<label class="radio"><input type="radio" name="traded" value="observed"> শুধু চার্ট দেখেছি</label>
+</fieldset>
+<div class="grid">
+<div><label for="count">ট্রেড সংখ্যা</label><input id="count" type="number" min="0" step="1" value="0"></div>
+<div><label for="result">আজকের ফলাফল (ঐচ্ছিক)</label><input id="result" placeholder="যেমন: -৳250 বা +$3"></div>
+</div>
+<label for="tradeDetails">ট্রেডের বিবরণ / ট্রেড না নেওয়ার কারণ</label><textarea id="tradeDetails" placeholder="এন্ট্রির কারণ, SL/TP, ফলাফল, বা কেন ট্রেড নিইনি..."></textarea>
+<fieldset><legend>সেটআপের নিয়ম মেনেছ?</legend>
+<label class="radio"><input type="radio" name="followed" value="yes"> হ্যাঁ</label>
+<label class="radio"><input type="radio" name="followed" value="partial" checked> আংশিক</label>
+<label class="radio"><input type="radio" name="followed" value="no"> না</label>
+</fieldset>
+</div>
+
+<div class="card">
+<h2>⚠️ আজকের ভুল</h2>
+<div id="mistakeChecks">
+<label class="check"><input type="checkbox" value="Revenge trading"><span>লসের পর প্রতিশোধমূলক ট্রেড</span></label>
+<label class="check"><input type="checkbox" value="FOMO"><span>FOMO — সুযোগ মিসের ভয়ে এন্ট্রি</span></label>
+<label class="check"><input type="checkbox" value="Early entry"><span>কনফার্মেশনের আগে এন্ট্রি</span></label>
+<label class="check"><input type="checkbox" value="Moved SL"><span>স্টপ লস সরানো / ঝুঁকি বাড়ানো</span></label>
+<label class="check"><input type="checkbox" value="Overtrading"><span>অতিরিক্ত ট্রেড নেওয়া</span></label>
+<label class="check"><input type="checkbox" value="Setup violation"><span>নিজের সেটআপের নিয়ম ভাঙা</span></label>
+<label class="check"><input type="checkbox" value="Risk violation"><span>নির্ধারিত ঝুঁকির সীমা ভাঙা</span></label>
+<label class="check"><input type="checkbox" value="Emotional decision"><span>ভয়, লোভ বা রাগ থেকে সিদ্ধান্ত</span></label>
+<label class="check"><input type="checkbox" value="Other"><span>অন্য ভুল</span></label>
+</div>
+<label for="mistakes">ভুলের বিস্তারিত — কী ঘটেছিল?</label><textarea id="mistakes" placeholder="কোন ট্রেডে কী ভুল করেছি? ঠিক কোন নিয়মটি ভেঙেছি?"></textarea>
+<label for="cause">ভুলের কারণ</label><textarea id="cause" placeholder="তাড়াহুড়ো, ক্লান্তি, FOMO, ভুল বিশ্লেষণ, নিউজ ইত্যাদি..."></textarea>
+<label for="lesson">আজকের শিক্ষা</label><textarea id="lesson" placeholder="এই ভুল থেকে কী শিখলাম?"></textarea>
+<label for="nextRule">পরেরবার কী করব?</label><textarea id="nextRule" placeholder="একটি নির্দিষ্ট নিয়ম লিখো, যেমন: কনফার্মেশন ছাড়া এন্ট্রি নয়।"></textarea>
+</div>
+
+<div class="card">
+<h2>🧠 মন ও আবেগ</h2>
+<label for="emotion">আজকের প্রধান অনুভূতি</label><select id="emotion"><option>শান্ত ও স্থির</option><option>ভয় / উদ্বেগ</option><option>লোভ / অতিরিক্ত উত্তেজনা</option><option>রাগ / হতাশা</option><option>মন খারাপ / একাকিত্ব</option><option>মিশ্র অনুভূতি</option></select>
+<div class="grid">
+<div><label for="focus">মনোযোগ (১–৫)</label><select id="focus"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
+<div><label for="discipline">ডিসিপ্লিন (১–৫)</label><select id="discipline"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
+</div>
+<label for="mindNotes">অতিরিক্ত নোট</label><textarea id="mindNotes" placeholder="কীভাবে আবেগ সামলেছি? কী উন্নতি হয়েছে?"></textarea>
+</div>
+
+<div class="card">
+<h2>✅ দৈনিক ডিসিপ্লিন চেকলিস্ট</h2>
+<div id="habitChecks">
+<label class="check"><input type="checkbox" value="Breathing"><span>ব্রিদিং এক্সারসাইজ করেছি</span></label>
+<label class="check"><input type="checkbox" value="Mindfulness"><span>৫ মিনিট ধ্যান / মনোযোগের অনুশীলন</span></label>
+<label class="check"><input type="checkbox" value="Exercise"><span>১৫–২০ মিনিট হাঁটা বা ব্যায়াম</span></label>
+<label class="check"><input type="checkbox" value="Learning"><span>২০–৩০ মিনিট শেখা / পড়াশোনা</span></label>
+<label class="check"><input type="checkbox" value="Sleep"><span>পর্যাপ্ত ঘুমের ব্যবস্থা করেছি</span></label>
+<label class="check"><input type="checkbox" value="Phone control"><span>অপ্রয়োজনীয় স্ক্রলিং নিয়ন্ত্রণ করেছি</span></label>
+<label class="check"><input type="checkbox" value="Daily plan"><span>আগামী দিনের ৩টি কাজ পরিকল্পনা করেছি</span></label>
+<label class="check"><input type="checkbox" value="Journal review"><span>দিনের হিসাব ও ভুল লিখেছি</span></label>
+<label class="check"><input type="checkbox" value="Nutrition"><span>খাবার ও পানি গ্রহণের যত্ন নিয়েছি</span></label>
+</div>
+<div class="notice">ব্রিদিং: আরাম করে বসে ৪ সেকেন্ডে শ্বাস নাও, ৬ সেকেন্ডে ছাড়ো—১–২ মিনিট দিয়ে শুরু করো। অস্বস্তি হলে স্বাভাবিক শ্বাসে ফিরে এসো।</div>
+</div>
+<div class="btns">
+<button class="btn" id="save">💾 রেকর্ড সেভ করো</button>
+<button class="btn secondary" id="clearForm">ফর্ম খালি করো</button>
+</div>
+<div class="notice" id="saveStatus" aria-live="polite">এই ডিভাইস ও ব্রাউজারে সেভ হওয়া রেকর্ড দেখতে পারবে। নিয়মিত ব্যাকআপ নাও।</div>
+</section>
+
+<section id="history">
+<div class="card">
+<h2>🗂️ তারিখ অনুযায়ী পুরোনো রেকর্ড</h2>
+<label for="searchDate">নির্দিষ্ট তারিখ খুঁজুন</label><input id="searchDate" type="date">
+<label for="searchText">ভুল বা নোট দিয়ে খুঁজুন</label><input id="searchText" placeholder="যেমন: FOMO, SL, ভয়">
+<div class="btns"><button class="btn secondary" id="resetSearch">সব রেকর্ড দেখাও</button></div>
+<div id="historyList"></div>
+</div>
+</section>
+
+<section id="reports">
+<div class="card">
+<h2>📊 পারফরম্যান্স রিপোর্ট</h2>
+<div class="grid">
+<div><label for="reportMonth">মাস বেছে নাও</label><input id="reportMonth" type="month"></div>
+<div><label for="reportMode">রিপোর্ট</label><select id="reportMode"><option value="month">মাসিক</option><option value="week">গত ৭ দিন</option></select></div>
+</div>
+<div class="statgrid" id="stats"></div>
+<h3>ভুলের পুনরাবৃত্তি</h3><div id="mistakeStats"></div>
+<h3>দৈনিক অভ্যাসের ধারাবাহিকতা</h3><div id="habitStats"></div>
+<div class="notice">রিপোর্ট শুধু তোমার সেভ করা রেকর্ডের ওপর ভিত্তি করে তৈরি হবে। অসম্পূর্ণ বা না-সেভ করা দিন গণনায় আসবে না।</div>
+</div>
+</section>
+
+<section id="backup">
+<div class="card">
+<h2>🔐 ডেটা ব্যাকআপ ও পুনরুদ্ধার</h2>
+<p class="sub">রেকর্ড এই ব্রাউজারের Local Storage-এ থাকে। ব্রাউজারের ডেটা মুছে গেলে বা ডিভাইস বদলালে হারাতে পারে। তাই JSON ব্যাকআপ ডাউনলোড করে নিরাপদে রাখো।</p>
+<div class="btns">
+<button class="btn" id="export">ব্যাকআপ ডাউনলোড (JSON)</button>
+<label class="btn secondary" style="display:inline-flex;align-items:center;cursor:pointer">ব্যাকআপ ইমপোর্ট<input id="importFile" type="file" accept=".json,application/json" hidden></label>
+</div>
+<h3>রেকর্ডের হিসাব</h3><div id="backupCount" class="sub"></div>
+<div class="notice">গোপনীয়তা: এই সাধারণ সংস্করণে রেকর্ড অনলাইনে আপলোড হয় না। একই ব্রাউজার/ডিভাইসে দেখা যায়। একাধিক ডিভাইসে সিঙ্ক বা অ্যাকাউন্টভিত্তিক স্টোরেজ নেই।</div>
+<h3>সব রেকর্ড মুছে ফেলবে?</h3><button class="btn danger" id="deleteAll">সব রেকর্ড মুছে ফেলো</button>
+</div>
+</section>
+<footer>Trading & Self-Discipline Journal • নিজের নিয়ম মেনে চলা শেখার জন্য, লাভের নিশ্চয়তা নয়।</footer>
+</div>
+<script>
+(() => {
+const KEY='trading_self_discipline_journal_v1';
+const $=id=>document.getElementById(id);
+const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+$('date').value=today();$('reportMonth').value=today().slice(0,7);
+let records=load();
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(records));}
+function selected(name){return document.querySelector(`input[name="${name}"]:checked`)?.value||''}
+function setRadio(name,value){const e=document.querySelector(`input[name="${name}"][value="${value}"]`);if(e)e.checked=true}
+function checkedValues(id){return [...$(id).querySelectorAll('input[type=checkbox]:checked')].map(x=>x.value)}
+function setChecks(id,values){$(id).querySelectorAll('input[type=checkbox]').forEach(x=>x.checked=values.includes(x.value))}
+function val(id){return $(id).value}
+function getForm(){
+return {date:val('date'),market:val('market'),traded:selected('traded'),count:Number(val('count')||0),result:val('result'),tradeDetails:val('tradeDetails'),followed:selected('followed'),mistakeTags:checkedValues('mistakeChecks'),mistakes:val('mistakes'),cause:val('cause'),lesson:val('lesson'),nextRule:val('nextRule'),emotion:val('emotion'),focus:Number(val('focus')),discipline:Number(val('discipline')),mindNotes:val('mindNotes'),habits:checkedValues('habitChecks'),updatedAt:new Date().toISOString()};
+}
+function fillForm(r){
+$('date').value=r.date||today();$('market').value=r.market||'XAU/USD (Gold)';setRadio('traded',r.traded||'no');$('count').value=r.count??0;$('result').value=r.result||'';$('tradeDetails').value=r.tradeDetails||'';setRadio('followed',r.followed||'partial');setChecks('mistakeChecks',r.mistakeTags||[]);$('mistakes').value=r.mistakes||'';$('cause').value=r.cause||'';$('lesson').value=r.lesson||'';$('nextRule').value=r.nextRule||'';$('emotion').value=r.emotion||'শান্ত ও স্থির';$('focus').value=String(r.focus||3);$('discipline').value=String(r.discipline||3);$('mindNotes').value=r.mindNotes||'';setChecks('habitChecks',r.habits||[]);
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function save(){
+const r=getForm();if(!r.date){$('saveStatus').textContent='তারিখ নির্বাচন করো।';return}
+records[r.date]=r;persist();$('saveStatus').textContent=`${r.date} তারিখের রেকর্ড সেভ হয়েছে। পুরোনো রেকর্ডে গিয়ে আবার দেখতে পারবে।`;renderAll();
+}
+$('save').addEventListener('click',save);
+$('clearForm').addEventListener('click',()=>{if(!confirm('ফর্মের লেখা মুছবে? আগে সেভ না করলে এই লেখাগুলো হারাবে।'))return;fillForm({date:val('date'),traded:'no',count:0,followed:'partial',focus:3,discipline:3});$('saveStatus').textContent='ফর্ম খালি করা হয়েছে।'});
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('section').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));renderAll()}));
+function renderHistory(){
+const date=val('searchDate'),q=val('searchText').toLowerCase();
+const arr=Object.values(records).sort((a,b)=>b.date.localeCompare(a.date)).filter(r=>(!date||r.date===date)&&(!q||JSON.stringify(r).toLowerCase().includes(q)));
+$('historyList').innerHTML=arr.length?arr.map(r=>`<article class="item"><div class="itemtop"><strong>${esc(r.date)}</strong><span class="pill">${r.traded==='yes'?'ট্রেড করেছি':r.traded==='observed'?'চার্ট দেখেছি':'ট্রেড করিনি'}</span></div><div class="small">${esc(r.market)} · ট্রেড: ${r.count||0} · ফলাফল: ${esc(r.result||'উল্লেখ নেই')}</div><p>${esc(r.mistakes||'ভুলের বিস্তারিত লেখা হয়নি')}</p><div class="small">ভুল: ${esc((r.mistakeTags||[]).join(', ')||'ট্যাগ করা হয়নি')}<br>অভ্যাস: ${(r.habits||[]).length}/9 · মনোযোগ: ${r.focus||'-'}/5 · ডিসিপ্লিন: ${r.discipline||'-'}/5</div><div class="btns"><button class="btn secondary" data-edit="${esc(r.date)}">খুলে সম্পাদনা</button><button class="btn secondary" data-delete="${esc(r.date)}">এই রেকর্ড মুছো</button></div></article>`).join(''):'<div class="empty">কোনো রেকর্ড পাওয়া যায়নি। আজকের জার্নাল পূরণ করে সেভ করো।';
+$('historyList').querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',()=>{fillForm(records[b.dataset.edit]);document.querySelector('[data-tab="today"]').click();window.scrollTo({top:0,behavior:'smooth'});$('saveStatus').textContent=`${b.dataset.edit} রেকর্ড সম্পাদনা করা হচ্ছে। পরিবর্তনের পর আবার সেভ করো।`}));
+$('historyList').querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>{const d=b.dataset.delete;if(confirm(`${d} তারিখের রেকর্ড মুছে ফেলবে?`)){delete records[d];persist();renderAll()}}));
+}
+function renderReports(){
+const mode=val('reportMode'),month=val('reportMonth'),now=new Date();let arr=Object.values(records);
+if(mode==='month')arr=arr.filter(r=>r.date.startsWith(month));else{const start=new Date();start.setDate(start.getDate()-6);const from=`${start.getFullYear()}-${String(start.getMonth()+1).padStart(2,'0')}-${String(start.getDate()).padStart(2,'0')}`;arr=arr.filter(r=>r.date>=from&&r.date<=today())}
+const trades=arr.filter(r=>r.traded==='yes').length,tradeCount=arr.reduce((s,r)=>s+(Number(r.count)||0),0),mistakes=arr.reduce((s,r)=>s+(r.mistakeTags||[]).length,0),habitAvg=arr.length?Math.round(arr.reduce((s,r)=>s+(r.habits||[]).length/9*100,0)/arr.length):0;
+$('stats').innerHTML=[['দিনের রেকর্ড',arr.length],['ট্রেড করা দিন',trades],['মোট ট্রেড',tradeCount],['দৈনিক অভ্যাস গড়',habitAvg+'%']].map(([a,b])=>`<div class="stat"><strong>${esc(b)}</strong><span>${a}</span></div>`).join('');
+const counts={};arr.forEach(r=>(r.mistakeTags||[]).forEach(t=>counts[t]=(counts[t]||0)+1));
+const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+$('mistakeStats').innerHTML=sorted.length?sorted.map(([name,n])=>`<div style="margin:10px 0"><div class="itemtop"><span>${esc(name)}</span><strong>${n} বার</strong></div><div class="bar"><i style="width:${Math.min(100,n/Math.max(...sorted.map(x=>x[1]))*100)}%"></i></div></div>`).join(''):'<div class="empty">এই সময়ের মধ্যে ভুলের ট্যাগ করা রেকর্ড নেই।';
+const hc={};arr.forEach(r=>(r.habits||[]).forEach(h=>hc[h]=(hc[h]||0)+1));
+$('habitStats').innerHTML=Object.keys(hc).length?Object.entries(hc).sort((a,b)=>b[1]-a[1]).map(([n,c])=>`<div class="itemtop" style="padding:8px 0"><span>${esc(n)}</span><strong>${c} দিন</strong></div>`).join(''):'<div class="empty">এই সময়ের কোনো অভ্যাস রেকর্ড নেই।';
+}
+function renderDashboard(){
+ const todayRecord=records[today()]||null; const all=Object.values(records); const tradedDays=all.filter(r=>r.traded==='yes').length; const habits=todayRecord?.habits?.length||0; const discipline=todayRecord?.discipline;
+ $('overviewDate').textContent=new Date().toLocaleDateString('bn-BD',{weekday:'long',day:'numeric',month:'long'});
+ $('quickRecords').textContent=String(all.length); $('quickTradeDays').textContent=String(tradedDays); $('quickHabits').textContent=Math.round(habits/9*100)+'%'; $('quickDiscipline').textContent=discipline?String(discipline)+'/5':'—'; $('quickProgressLabel').textContent=habits+' / 9'; $('quickProgress').style.width=(habits/9*100)+'%';
+}
+function renderAll(){renderHistory();renderReports();renderDashboard();$('backupCount').textContent=`এখন ${Object.keys(records).length} দিনের রেকর্ড সংরক্ষিত আছে।`}
+$('searchDate').addEventListener('change',renderHistory);$('searchText').addEventListener('input',renderHistory);$('resetSearch').addEventListener('click',()=>{$('searchDate').value='';$('searchText').value='';renderHistory()});$('reportMonth').addEventListener('change',renderReports);$('reportMode').addEventListener('change',renderReports);
+$('export').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(records,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`trading-journal-backup-${today()}.json`;a.click();URL.revokeObjectURL(url)});
+$('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!data||typeof data!=='object'||Array.isArray(data))throw Error();if(!confirm('ব্যাকআপের রেকর্ডগুলো বর্তমান রেকর্ডের সঙ্গে যোগ করবে? একই তারিখের রেকর্ড ব্যাকআপ দিয়ে বদলে যাবে।'))return;records={...records,...data};persist();renderAll();alert('ব্যাকআপ ইমপোর্ট হয়েছে।')}catch(err){alert('ফাইলটি সঠিক JSON ব্যাকআপ নয়।')}e.target.value=''});
+$('deleteAll').addEventListener('click',()=>{if(confirm('সতর্কতা: সব দিনের রেকর্ড স্থায়ীভাবে মুছবে? আগে ব্যাকআপ নিয়ে নাও।')&&confirm('শেষবার নিশ্চিত করো—সব রেকর্ড মুছবে?')){records={};persist();renderAll();alert('সব রেকর্ড মুছে ফেলা হয়েছে।')}});
+renderAll();
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(err => console.log('Offline setup unavailable', err)));
+}
+</script>
+</body></html>
